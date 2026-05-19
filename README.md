@@ -1,4 +1,4 @@
-# KlaudeCode
+# Klaude-Code
 
 A terminal coding agent powered by the Anthropic API. KlaudeCode is an open-source effort to reproduce the developer experience of [Claude Code](https://www.anthropic.com/claude-code) from the ground up.
 

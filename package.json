@@ -1,7 +1,7 @@
 {
-  "name": "kepcode",
+  "name": "klaudecode",
   "version": "1.0.0",
-  "description": "",
+  "description": "A terminal coding agent powered by the Anthropic API, aiming to reproduce the Claude Code experience.",
   "main": "agentloop.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kepler2024/KepCode.git"
+    "url": "git+https://github.com/Kepler2024/KlaudeCode.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["anthropic", "claude", "agent", "coding-agent", "cli", "typescript"],
+  "author": "Harry C. Kepler",
+  "license": "MIT",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/Kepler2024/KepCode/issues"
+    "url": "https://github.com/Kepler2024/KlaudeCode/issues"
   },
-  "homepage": "https://github.com/Kepler2024/KepCode#readme",
+  "homepage": "https://github.com/Kepler2024/KlaudeCode#readme",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
     "dotenv": "^17.4.2",

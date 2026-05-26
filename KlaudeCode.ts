@@ -49,7 +49,7 @@ async function runBash(command:string): Promise<string> {
     }
 }
 
-async function agentLoop(messages:Anthropic.MessageParam[]): Promise<void> {
+async function agentLoop(messages:Anthropic.MessageParam[], log:any[]): Promise<void> {
     while (true) {
         const response = await client.messages.create({
             model: MODEL,
@@ -58,8 +58,9 @@ async function agentLoop(messages:Anthropic.MessageParam[]): Promise<void> {
             tools: TOOLS,
             max_tokens:8000,
         })
-        
+
         messages.push({role:"assistant", content:response.content})
+        log.push({role:"assistant", response})
 
         if (response.stop_reason !== "tool_use") {
             return
@@ -83,11 +84,13 @@ async function agentLoop(messages:Anthropic.MessageParam[]): Promise<void> {
         }
 
         messages.push({role:"user", content:results})
+        log.push({role:"user", content:results})
     }
 }
 
 // main loop
 const history:Anthropic.MessageParam[] = []
+const log:any[] = []
 while (true) {
     const rl = readline.createInterface({ input, output });
     const query = await rl.question(pc.cyan("User>> "))
@@ -96,16 +99,10 @@ while (true) {
         break
     }
     history.push({role:"user", content: query})
-    await agentLoop(history)
-    const finalResponse = history[history.length - 1].content
-    if (typeof finalResponse === "string") {
-        console.log(pc.magenta(`Agent>> ${finalResponse}`))
-    } else {
-        for (const block of finalResponse) {
-            if (block.type === "text") {
-                console.log(pc.magenta(`Agent>> ${block.text}`))
-            }
-        }
-    }
+    log.push({role:"user", content: query})
+    await agentLoop(history, log)
+    console.log(pc.magenta("=== Full Log ==="))
+    console.log(JSON.stringify(log, null, 2))
+    console.log(pc.magenta("=== End Log ==="))
     rl.close()
 }

@@ -1,6 +1,6 @@
-# Klaude-Code
+# AgentK
 
-A terminal coding agent powered by the Anthropic API. KlaudeCode is an open-source effort to reproduce the developer experience of [Claude Code](https://www.anthropic.com/claude-code) from the ground up.
+A terminal coding agent powered by the Anthropic API. AgentK is an open-source effort to reproduce the developer experience of [Claude Code](https://www.anthropic.com/claude-code) from the ground up.
 
 This is the **first iteration**: an agent loop that can hold a conversation, run shell commands on your behalf, and iterate until the task is done. Future versions will grow toward feature parity with Claude Code.
 
@@ -21,8 +21,8 @@ This is the **first iteration**: an agent loop that can hold a conversation, run
 ## Quickstart
 
 ```bash
-git clone https://github.com/Kepler2024/KlaudeCode.git
-cd ./KlaudeCode
+git clone https://github.com/Kepler2024/Agent-K.git
+cd ./Agent-K
 npm install
 cp .env.example .env
 # edit .env and fill in ANTHROPIC_API_KEY
@@ -54,7 +54,7 @@ Conversation history is preserved across turns, so the agent remembers what it h
 
 ## Safety
 
-KlaudeCode lets an LLM execute arbitrary shell commands on your machine. The built-in blocklist is a courtesy, not a sandbox.
+AgentK lets an LLM execute arbitrary shell commands on your machine. The built-in blocklist is a courtesy, not a sandbox.
 
 - Run it inside a container, VM, or a throwaway directory.
 - Do not point it at directories containing secrets, production credentials, or anything you cannot afford to lose.
